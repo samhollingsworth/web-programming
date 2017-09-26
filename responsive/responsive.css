@@ -1,0 +1,38 @@
+@media screen
+	and (min-width-device: 1201px)	{
+
+}
+@media screen
+	and (min-width-device: 1101px)
+	and (max-width-device: 1200px)	{
+
+}
+@media screen
+	and (min-width-device: 1001px)
+	and (max-width-device: 1100px)	{
+
+}
+@media screen
+	and (min-width-device: 901px)
+	and (max-width-device: 1000px)	{
+
+}
+@media screen
+	and (min-width-device: 801px)
+	and (max-width-device: 900px)	{
+
+}
+@media screen
+	and (min-width-device: 701px)
+	and (max-width-device: 800px)	{
+
+}
+@media screen
+	and (min-width-device: 601px)
+	and (max-width-device: 700px)	{
+
+}
+@media screen
+	and (max-width-device: 600px)	{
+	
+}
