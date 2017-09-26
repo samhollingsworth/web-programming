@@ -1,38 +1,54 @@
 @media screen
 	and (min-width-device: 1201px)	{
-
+	#garfield {
+		width:400px; height:130px; background:url(responsive/garfield.gif) 0 0;}
+	}
 }
 @media screen
 	and (min-width-device: 1101px)
 	and (max-width-device: 1200px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(responsive/garfield.gif) 400px 0px;}
+	}
 }
 @media screen
 	and (min-width-device: 1001px)
 	and (max-width-device: 1100px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 0 -130px;}
+	}
 }
 @media screen
 	and (min-width-device: 901px)
 	and (max-width-device: 1000px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 200px -130px;}
+	}
 }
 @media screen
 	and (min-width-device: 801px)
 	and (max-width-device: 900px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 400px -130px;}
+	}
 }
 @media screen
 	and (min-width-device: 701px)
 	and (max-width-device: 800px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 0 -260px;}
+	}
 }
 @media screen
 	and (min-width-device: 601px)
 	and (max-width-device: 700px)	{
-
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 200px -260px;}
+	}
 }
 @media screen
 	and (max-width-device: 600px)	{
-	
+	#garfield {
+		width:200px; height:130px; background:url(garfield.gif) 400px -260px;}
+	}
 }
