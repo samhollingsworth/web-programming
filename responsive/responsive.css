@@ -3,44 +3,37 @@
 		width:200px; height:133px; background:url(garfield.gif) 200px -266px;
 	}
 }
-@media screen
-	and (min-width: 601px)	{
+@media screen and (min-width: 601px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 400px -266px;
 	}
 }
-@media screen
-	and (min-width: 701px)	{
+@media screen and (min-width: 701px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 0px -266px;
 	}
 }
-@media screen
-	and (min-width: 801px)	{
+@media screen and (min-width: 801px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 200px -133px;
 	}
 }
-@media screen
-	and (min-width: 901px)	{
+@media screen and (min-width: 901px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 400px -133px;
 	}
 }
-@media screen
-	and (min-width: 1001px)	{
+@media screen and (min-width: 1001px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 0px -133px;
 	}
 }
-@media screen
-	and (min-width: 1101px)	{
+@media screen and (min-width: 1101px)	{
 	.garfield {
 		width:200px; height:133px; background:url(garfield.gif) 200px 0px;
 	}
 }
-@media screen
-	and (min-width: 1201px)	{
+@media screen and (min-width: 1201px)	{
 	.garfield {
 		width:400px; height:133px; background:url(garfield.gif) 0px 0px;
 	}
