@@ -1,7 +1,17 @@
 body {
 	background-color: PowderBlue;
+	text-align: center;
+}
+
+h1 {
+	background-color: white;
+}
+
+h2 {
+	font-style: italic;
 }
 
 video {
-	
+	display: block;
+	margin: auto;
 }
