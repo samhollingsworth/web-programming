@@ -4,14 +4,20 @@
 		<title>Historic Landmarks</title>
 		<meta charset="utf-8"/>
 		<link href="style.css" rel="stylesheet"/>
-	</head>
-	<body>
 
+		<script>
+			lat = 0;
+			long = 0;
 
-		<script type="text/javascript">
-
-
-
+			function init() {
+				map = new google.maps.Map(document.getElementById("map"), {
+					center: new google.maps.LatLng(lat,long);
+					zoom: 10;
+				});
+			}
 		</script>
+	</head>
+	<body onload="init()">
+		<div id="map"></div>
 	</body>
 </html>
