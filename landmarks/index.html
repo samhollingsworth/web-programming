@@ -6,18 +6,26 @@
 		<link href="style.css" rel="stylesheet"/>
 
 		<script>
-			lat = 0;
-			long = 0;
 
 			function init() {
-				map = new google.maps.Map(document.getElementById("map"), {
-					center: new google.maps.LatLng(lat,long);
-					zoom: 10;
-				});
+
+				var location = new google.maps.LatLng(42.3599611,-71.0567528);
+
+				var details = {
+					zoom: 10,
+					center: location,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+
+				var web_map = new google.maps.Map(document.getElementById("map"), details);
+
 			}
 		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw4X6Ow-dXpZ03_Av_fUyHe40YSsOaBW8&callback=init" async defer></script>
 	</head>
+
 	<body onload="init()">
 		<div id="map"></div>
 	</body>
+
 </html>
