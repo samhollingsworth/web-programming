@@ -20,12 +20,15 @@
 		<!--Remove this^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
 		<script>
-			var lat = 0;
-			var long = 0;
+			var lat;
+			var long;
+			var map;
 
 			function init() {
 
-				var location = new google.maps.LatLng(42, -71);
+				findMe();
+				console.log(lat);
+				var location = new google.maps.LatLng(lat, long);
 
 				var details = {
 					zoom: 10,
@@ -36,7 +39,14 @@
 				var map = new google.maps.Map(document.getElementById("map"), details);
 
 				createMarker(location, map, "personal_icon.png", "My Location");
-				console.log("DONE");
+			}
+
+			function findMe() {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					lat = position.coords.latitude;
+					long = position.coords.longitude;
+					console.log(lat);
+				});
 			}
 
 			function createMarker(location, map, image, title) {
