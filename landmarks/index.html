@@ -4,34 +4,23 @@
 		<title>Historic Landmarks</title>
 		<meta name="viewport" content="initial-scale=1.0"/>
 		<meta charset="utf-8"/>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVSxb7WXxUOBKKoYmGbHBBr60s_qZZ5Q&callback=init" async defer></script>
 		<link  type="text/css" href="style.css" rel="stylesheet"/>
-
-		<!--Remove this-->
-		<style>
-		  #map {
-		    height: 100%;
-		  }
-		  html, body {
-		    height: 100%;
-		    margin: 0;
-		    padding: 0;
-		  }
-		</style>
-		<!--Remove this^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
 		<script>
 			var lat;
 			var long;
 			var map;
+			var marker;
+			var infowindow;
 
 			function init() {
 
 				findMe();
-				console.log(lat);
-				var location = new google.maps.LatLng(lat, long);
+				var location = new google.maps.LatLng(42.4060571, -71.11938219999999);
 
 				var details = {
-					zoom: 10,
+					zoom: 13,
 					center: location,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
@@ -45,27 +34,37 @@
 				navigator.geolocation.getCurrentPosition(function(position) {
 					lat = position.coords.latitude;
 					long = position.coords.longitude;
-					console.log(lat);
+					postInfo();
 				});
 			}
 
+			function postInfo() {
+				var xhr = new XMLHttpRequest();
+				var source = "https://defense-in-derpth.herokuapp.com/sendLocation";
+				var parameter = "login=jzu5f7mQ&lat=" + lat + "&lng=" + long;
+
+				xhr.open("POST", source, true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr.send(parameter);
+
+			}
+
 			function createMarker(location, map, image, title) {
-				var marker = new google.maps.Marker({
+				marker = new google.maps.Marker({
 					title: title,
 					position: location,
 					icon: image
 				});
 				marker.setMap(map);
 
-				var infowindow = new google.maps.InfoWindow();
+				infowindow = new google.maps.InfoWindow();
 
 				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.setContent(marker.title);
-					infowindow.open(map, marker);
+					infowindow.setContent(this.title);
+					infowindow.open(map, this);
 				});
 			}
 		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVSxb7WXxUOBKKoYmGbHBBr60s_qZZ5Q&callback=init" async defer></script>
 	</head>
 
 	<body onload="init()">
