@@ -10,24 +10,24 @@
 		<script>
 			var lat;
 			var long;
+			var myLocation;
 			var map;
-			var marker;
 			var infowindow;
 
 			function init() {
 
 				findMe();
-				var location = new google.maps.LatLng(42.4060571, -71.11938219999999);
+				var myLocation = new google.maps.LatLng(42.4060571, -71.11938219999999);
 
 				var details = {
 					zoom: 13,
-					center: location,
+					center: myLocation,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 
 				var map = new google.maps.Map(document.getElementById("map"), details);
 
-				createMarker(location, map, "personal_icon.png", "My Location");
+				createMarker(myLocation, map, "personal_icon.png", "My Location");
 			}
 
 			function findMe() {
@@ -47,10 +47,21 @@
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhr.send(parameter);
 
+				receiveInfo(xhr);
+			}
+
+			function receiveInfo(xhr) {
+				xhr.onreadystatechange = function() {				//Code from https://stackoverflow.com/questions/24546483/how-to-get-data-field-from-xhr-responsetext
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var response = xhr.responseText;
+						var JSONresponse = JSON.parse(response);
+						console.log(JSON.parse(response));
+					}
+				}
 			}
 
 			function createMarker(location, map, image, title) {
-				marker = new google.maps.Marker({
+				var marker = new google.maps.Marker({
 					title: title,
 					position: location,
 					icon: image
