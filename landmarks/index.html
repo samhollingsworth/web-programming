@@ -1,15 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Historic Landmarks</title>
+		<meta name="viewport" content="initial-scale=1.0"/>
 		<meta charset="utf-8"/>
-		<link href="style.css" rel="stylesheet"/>
+		<link  type="text/css" href="style.css" rel="stylesheet"/>
+
+		<!--Remove this-->
+		<style>
+		  #map {
+		    height: 100%;
+		  }
+		  html, body {
+		    height: 100%;
+		    margin: 0;
+		    padding: 0;
+		  }
+		</style>
+		<!--Remove this^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
 		<script>
+			var lat = 0;
+			var long = 0;
 
 			function init() {
 
-				var location = new google.maps.LatLng(42.3599611,-71.0567528);
+				var location = new google.maps.LatLng(42, -71);
 
 				var details = {
 					zoom: 10,
@@ -17,11 +33,29 @@
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 
-				var web_map = new google.maps.Map(document.getElementById("map"), details);
+				var map = new google.maps.Map(document.getElementById("map"), details);
 
+				createMarker(location, map, "personal_icon.png", "My Location");
+				console.log("DONE");
+			}
+
+			function createMarker(location, map, image, title) {
+				var marker = new google.maps.Marker({
+					title: title,
+					position: location,
+					icon: image
+				});
+				marker.setMap(map);
+
+				var infowindow = new google.maps.InfoWindow();
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(marker.title);
+					infowindow.open(map, marker);
+				});
 			}
 		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw4X6Ow-dXpZ03_Av_fUyHe40YSsOaBW8&callback=init" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVSxb7WXxUOBKKoYmGbHBBr60s_qZZ5Q&callback=init" async defer></script>
 	</head>
 
 	<body onload="init()">

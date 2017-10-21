@@ -21,4 +21,4 @@ Time Spent:
 
 Citations:
 ----------
-Code used from tuftsdev/WebProgramming/examples/google_maps GitHub page
+Code used from tuftsdev/WebProgramming/examples/google_maps GitHub page and from Google Maps APIs Tutorials
