@@ -55,9 +55,34 @@
 					if (xhr.readyState == 4 && xhr.status == 200) {
 						var response = xhr.responseText;
 						var JSONresponse = JSON.parse(response);
-						console.log(JSON.parse(response));
+						placeMarkers(JSONresponse);
 					}
 				}
+			}
+
+			function placeMarkers(JSONresponse) {
+				people = JSONresponse.people;
+				landmarks = JSONresponse.landmarks;
+				console.log(landmarks);
+
+				var person;
+				var location;
+				for (person in people) {
+					location = new google.maps.LatLng(people[person].lat, people[person].lng);
+					createMarker(location, map, "student_icon.png", people[person].login);
+					console.log(people[person].lat);
+					console.log(people[person].lng);
+					console.log(people[person].login);
+				}
+
+				var place;
+				for (place in landmarks) {
+					location = new google.maps.LatLng(landmarks[place].geometry.coordinates[1], landmarks[place].geometry.coordinates[0]);
+					createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Details);
+					console.log(landmarks[place].geometry.coordinates[1]);
+					console.log(landmarks[place].geometry.coordinates[0]);
+				}
+
 			}
 
 			function createMarker(location, map, image, title) {
@@ -75,6 +100,7 @@
 					infowindow.open(map, this);
 				});
 			}
+
 		</script>
 	</head>
 
