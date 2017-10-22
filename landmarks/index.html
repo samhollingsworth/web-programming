@@ -4,7 +4,7 @@
 		<title>Historic Landmarks</title>
 		<meta name="viewport" content="initial-scale=1.0"/>
 		<meta charset="utf-8"/>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVSxb7WXxUOBKKoYmGbHBBr60s_qZZ5Q&callback=init" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiVSxb7WXxUOBKKoYmGbHBBr60s_qZZ5Q&callback=init&libraries=geometry" async defer></script>
 		<link  type="text/css" href="style.css" rel="stylesheet"/>
 
 		<script>
@@ -16,8 +16,8 @@
 
 			function init() {
 
+				myLocation = new google.maps.LatLng(42.4060571, -71.11938219999999);
 				findMe();
-				var myLocation = new google.maps.LatLng(42.4060571, -71.11938219999999);
 
 				var details = {
 					zoom: 13,
@@ -63,24 +63,30 @@
 			function placeMarkers(JSONresponse) {
 				people = JSONresponse.people;
 				landmarks = JSONresponse.landmarks;
-				console.log(landmarks);
 
 				var person;
 				var location;
 				for (person in people) {
 					location = new google.maps.LatLng(people[person].lat, people[person].lng);
+
+					//Compute distance
+					var distance = google.maps.geometry.spherical.computeDistanceBetween(myLocation, location);
+					//Convert to miles
+					distance = distance * 0.000621371192
+					var title = "<p>" + people[person].login + "</p>" + "<p>" + distance + " miles away </p>";
+
 					createMarker(location, map, "student_icon.png", people[person].login);
-					console.log(people[person].lat);
-					console.log(people[person].lng);
-					console.log(people[person].login);
+					//console.log(people[person].lat);
+					//console.log(people[person].lng);
+					//console.log(people[person].login);
 				}
 
 				var place;
 				for (place in landmarks) {
 					location = new google.maps.LatLng(landmarks[place].geometry.coordinates[1], landmarks[place].geometry.coordinates[0]);
 					createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Details);
-					console.log(landmarks[place].geometry.coordinates[1]);
-					console.log(landmarks[place].geometry.coordinates[0]);
+					//console.log(landmarks[place].geometry.coordinates[1]);
+					//console.log(landmarks[place].geometry.coordinates[0]);
 				}
 
 			}
