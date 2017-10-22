@@ -13,6 +13,8 @@
 			var myLocation;
 			var map;
 			var infowindow;
+			var people;
+			var landmarks;
 
 			function init() {
 
@@ -26,8 +28,6 @@
 				};
 
 				var map = new google.maps.Map(document.getElementById("map"), details);
-
-				createMarker(myLocation, map, "personal_icon.png", "My Location");
 			}
 
 			function findMe() {
@@ -72,26 +72,36 @@
 					//Compute distance
 					var distance = google.maps.geometry.spherical.computeDistanceBetween(myLocation, location);
 					//Convert to miles
-					distance = distance * 0.000621371192
+					distance = distance * 0.000621371192;
 					var title = "<p>" + people[person].login + "</p>" + "<p>" + distance + " miles away </p>";
 
 					createMarker(location, map, "student_icon.png", people[person].login);
-					//console.log(people[person].lat);
-					//console.log(people[person].lng);
-					//console.log(people[person].login);
 				}
 
 				var place;
+				var smallestDist = 9999;
+				var closestLandmark;
 				for (place in landmarks) {
 					location = new google.maps.LatLng(landmarks[place].geometry.coordinates[1], landmarks[place].geometry.coordinates[0]);
-					createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Details);
-					//console.log(landmarks[place].geometry.coordinates[1]);
-					//console.log(landmarks[place].geometry.coordinates[0]);
-				}
 
+					//Compute distance
+					var distance = google.maps.geometry.spherical.computeDistanceBetween(myLocation, location);
+					createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Location_Name);
+
+					//Find closest landmark
+					if (distance < smallestDist) {
+						smallestDist = distance;
+						closestLandmark = landmarks[place];
+					}
+				}
+				smallestDist = smallestDist * 0.000621371192;
+				var title = "<p>Closest Landmark: " + landmarks[place].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
+				createMarker(myLocation, map, "personal_icon.png", title);
 			}
 
 			function createMarker(location, map, image, title) {
+				console.log(title);
+				console.log(location);
 				var marker = new google.maps.Marker({
 					title: title,
 					position: location,
@@ -99,7 +109,9 @@
 				});
 				marker.setMap(map);
 
-				infowindow = new google.maps.InfoWindow();
+				infowindow = new google.maps.InfoWindow({
+					content: title
+				});
 
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.setContent(this.title);
