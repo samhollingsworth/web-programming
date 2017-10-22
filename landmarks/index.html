@@ -86,8 +86,11 @@
 
 					//Compute distance
 					var distance = google.maps.geometry.spherical.computeDistanceBetween(myLocation, location);
-					createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Location_Name);
+					distance = distance * 0.000621371192;
 
+					if (distance < 1) {
+						createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Location_Name);
+					}
 					//Find closest landmark
 					if (distance < smallestDist) {
 						smallestDist = distance;
@@ -97,11 +100,22 @@
 				smallestDist = smallestDist * 0.000621371192;
 				var title = "<p>Closest Landmark: " + landmarks[place].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
 				createMarker(myLocation, map, "personal_icon.png", title);
+				createPolyline(location);
+			}
+
+			function createPolyline(location) {
+				var polyline = new google.maps.Polyline({		//Code from https://developers.google.com/maps/documentation/javascript/examples/polyline-simple
+          				path: [myLocation,location],
+          				geodesic: true,
+          				strokeColor: '#FF0000',
+          				strokeOpacity: 1.0,
+          				strokeWeight: 2
+        			});
+
+        			polyline.setMap(map);
 			}
 
 			function createMarker(location, map, image, title) {
-				console.log(title);
-				console.log(location);
 				var marker = new google.maps.Marker({
 					title: title,
 					position: location,
