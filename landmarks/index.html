@@ -81,7 +81,6 @@
 
 				var place;
 				var smallestDist = 9999;
-				var closestLandmark;
 				for (place in landmarks) {
 					location = new google.maps.LatLng(landmarks[place].geometry.coordinates[1], landmarks[place].geometry.coordinates[0]);
 
@@ -90,11 +89,15 @@
 					distance = distance * 0.000621371192;
 
 					if (distance < 1) {
-						createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Location_Name);
+						createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Details);
 					}
 				}
-				smallestDist = smallestDist * 0.000621371192;
-				var title = "<p>Closest Landmark: " + landmarks[0].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
+
+				location = new google.maps.LatLng(landmarks[0].geometry.coordinates[1], landmarks[0].geometry.coordinates[0]);
+				var distance = google.maps.geometry.spherical.computeDistanceBetween(myLocation, location);
+				distance = distance * 0.000621371192;
+
+				var title = "<p>Closest Landmark: " + landmarks[0].properties.Location_Name + "</p>" + "<p>" + distance + " miles away</p>"
 				createMarker(myLocation, map, "personal_icon.png", title);
 
 				location = new google.maps.LatLng(landmarks[0].geometry.coordinates[1], landmarks[0].geometry.coordinates[0]);
