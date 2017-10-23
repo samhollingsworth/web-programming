@@ -98,6 +98,7 @@
 					}
 				}
 				smallestDist = smallestDist * 0.000621371192;
+				console.log(landmarks[place].properties.Location_Name);
 				var title = "<p>Closest Landmark: " + landmarks[place].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
 				createMarker(myLocation, map, "personal_icon.png", title);
 				createPolyline(location);
