@@ -22,12 +22,13 @@
 				findMe();
 
 				var details = {
-					zoom: 13,
+					zoom: 15,
 					center: myLocation,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				};
 
-				var map = new google.maps.Map(document.getElementById("map"), details);
+				map = new google.maps.Map(document.getElementById("map"), details);
+				map.setCenter(myLocation);
 			}
 
 			function findMe() {
@@ -75,7 +76,7 @@
 					distance = distance * 0.000621371192;
 					var title = "<p>" + people[person].login + "</p>" + "<p>" + distance + " miles away </p>";
 
-					createMarker(location, map, "student_icon.png", people[person].login);
+					createMarker(location, map, "student_icon.png", title);
 				}
 
 				var place;
@@ -91,16 +92,12 @@
 					if (distance < 1) {
 						createMarker(location, map, "landmark_icon.png", landmarks[place].properties.Location_Name);
 					}
-					//Find closest landmark
-					if (distance < smallestDist) {
-						smallestDist = distance;
-						closestLandmark = landmarks[place];
-					}
 				}
 				smallestDist = smallestDist * 0.000621371192;
-				console.log(landmarks[place].properties.Location_Name);
-				var title = "<p>Closest Landmark: " + landmarks[place].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
+				var title = "<p>Closest Landmark: " + landmarks[0].properties.Location_Name + "</p>" + "<p>" + smallestDist + " miles away</p>"
 				createMarker(myLocation, map, "personal_icon.png", title);
+
+				location = new google.maps.LatLng(landmarks[0].geometry.coordinates[1], landmarks[0].geometry.coordinates[0]);
 				createPolyline(location);
 			}
 

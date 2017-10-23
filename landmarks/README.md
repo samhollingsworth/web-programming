@@ -5,11 +5,11 @@ By: Samuel Hollingsworth
 
 Aspects Correctly Implemented:
 ------------------------------
-I think I have most of the assignment correctly implemented but I cannot manage to display the markers and polyline on the map.
+All parts are correctly implemented
 
 Aspects Not Correctly Implemented:
 ----------------------------------
-Display markers, Display own location on map, Display polyline
+None
 
 Collaborated With:
 ------------------
