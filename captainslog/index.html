@@ -11,7 +11,13 @@
         $(document).ready(function() {
 		$(document).keypress(function(e) {				//Code from https://stackoverflow.com/questions/979662/how-to-detect-pressing-enter-on-keyboard-using-jquery
     			if(e.which == 13) {
-        		alert('You pressed enter!');
+				var date = new Date();
+				var entry = "<p>" + date + " - " + $("input").val() + "</p>";
+
+
+
+
+				$("#log").prepend(entry);
     			}
 		});
 	})
