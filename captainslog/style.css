@@ -6,4 +6,5 @@ body {
 #log {
 	outline: solid;
 	outline-color: white;
+	background-color: lightgrey;
 }
