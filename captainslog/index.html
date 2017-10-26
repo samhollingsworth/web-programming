@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        // Your work will be done here...
+        $(document).ready(function() {
+		$(document).keypress(function(e) {				//Code from https://stackoverflow.com/questions/979662/how-to-detect-pressing-enter-on-keyboard-using-jquery
+    			if(e.which == 13) {
+        		alert('You pressed enter!');
+    			}
+		});
+	})
     </script>
 </head>
 
