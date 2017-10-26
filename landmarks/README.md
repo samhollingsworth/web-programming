@@ -17,7 +17,7 @@ Drew Corlin, Sinclair Meggitt
 
 Time Spent:
 -----------
-15 Hours
+20 Hours
 
 Citations:
 ----------
