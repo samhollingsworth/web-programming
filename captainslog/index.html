@@ -9,16 +9,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
+
+		console.log(localStorage);
+
+		if (localStorage.getItem("log") != undefined) {
+			var pastInput = localStorage.getItem("log");
+			$("#log").prepend(pastInput);
+		}
+
+		var log;
 		$(document).keypress(function(e) {				//Code from https://stackoverflow.com/questions/979662/how-to-detect-pressing-enter-on-keyboard-using-jquery
     			if(e.which == 13) {
 				var date = new Date();
 				var entry = "<p>" + date + " - " + $("input").val() + "</p>";
-
-
-
-
 				$("#log").prepend(entry);
-    			}
+
+				//Store log in local storage
+				log = entry + log;
+				localStorage.setItem("log", log);
+				console.log(localStorage);
+			}
 		});
 	})
     </script>

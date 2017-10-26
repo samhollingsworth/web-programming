@@ -5,19 +5,19 @@ By: Samuel Hollingsworth
 
 Aspects Correctly Implemented:
 ------------------------------
-
+All parts are correctly implemented
 
 Aspects Not Correctly Implemented:
 ----------------------------------
-
+None
 
 Collaboration With:
 -------------------
-
+None
 
 Time Spent:
 -----------
-
+2 Hours
 
 Citations:
 ----------
