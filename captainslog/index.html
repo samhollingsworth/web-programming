@@ -10,8 +10,6 @@
     <script>
         $(document).ready(function() {
 
-		console.log(localStorage);
-
 		if (localStorage.getItem("log") != undefined) {
 			var pastInput = localStorage.getItem("log");
 			$("#log").prepend(pastInput);
@@ -27,7 +25,6 @@
 				//Store log in local storage
 				log = entry + log;
 				localStorage.setItem("log", log);
-				console.log(localStorage);
 			}
 		});
 	})
