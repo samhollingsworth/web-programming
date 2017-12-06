@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-
 <html>
+	<head>
 
-	<meta charset="utf-8" />
-	<title>Assignment 4</title>
+		<meta charset="utf-8" />
+		<title>Assignment 4</title>
 
-</head>
-<body>
+	</head>
+	<body>
 	<h1>Assignment 4</h1>
 	<p>By Sam Hollingsworth</p>
 
 	<h2>Introduction</h2>
-		<p>thawing-hamlet-47380 is a Web Application implemented to place users on a map and display other
-			local users around them as well as nearby monuments. The Web App uses Node.js + Express and
+		<p>thawing-hamlet-47380 is a Web Application implemented as a web server to keep records of all checkins
+			from all users and return data when the correct information is provided. The server also contains
+			information of all monuments on the East Coast and provides users with monumnets within a mile of
+			their location when prompted. The Web App uses Node.js + Express and
 			a database to store all the information through mongoDB. I was hired to find the security and
 			privacy issues in the web application and record them in this document with my recommendations
-			to resolve each issue.</p>
+			to resolve each issue.
+		</p>
 
 	<h2>Methodology</h2>
 		<p>I began my testing with the attacks recommended in class by Ming. First, a Cross-Site Scripting attack
 			then a mongoDB injection. Next, I looked at the source code of the application and found bad
-			programming practice implemented by the developer so I documented how it can affect the application
+			programming practices implemented by the developer so I documented how it can affect the application
 			and by those who use it.
 		</p>
 
@@ -85,12 +88,12 @@
 	</ol>
 
 	<h2>Conclusion</h2>
-		<p>In conclusion, there were 3 issues found so far; Cross-Site Scripting vulnerability, mongoDB injection
+		<p>In conclusion, there were 3 issues found so far; a Cross-Site Scripting vulnerability, a mongoDB injection
 			vulnerability, and bad programming practices. This was not a comprehensive review of all security
 			flaws in the application, just the first 3 that were noticed by me. There are more present. In the
 			future, all data should be filtered in order to ensure it can be trusted and it won't hurt the
 			application.
-		</p> 
+		</p>
 
 	<h2>References</h2>
 		<ul>
