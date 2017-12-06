@@ -19,13 +19,18 @@
 
 	<h2>Methodology</h2>
 		<p>I began my testing with the attacks recommended in class by Ming. First, a Cross-Site Scripting attack
-			then a mongoDB injection. Next, I looked at the source code of the application to decide to do
-			a
-
+			then a mongoDB injection. Next, I looked at the source code of the application and found bad
+			programming practice implemented by the developer so I documented how it can affect the application
+			and by those who use it.
+		</p>
 
 	<h2>Abstract of Findings</h2>
-
-
+		<p>This web application contains security and privacy issues that range from Low to High Severity. All the
+			issues come from the application trusting the data the user inputs. This is bad practice and should
+			not exist in web applications as user input should never be trusted. All the issues found can be
+			resolved by implementing checks to make sure the input is what the developer intended in order to
+			filter out any malicious input to damage the application or gain access to confidential information.
+		</p>
 
 	<h2>Issues Found</h2>
 	<ol>
@@ -80,8 +85,12 @@
 	</ol>
 
 	<h2>Conclusion</h2>
-
-
+		<p>In conclusion, there were 3 issues found so far; Cross-Site Scripting vulnerability, mongoDB injection
+			vulnerability, and bad programming practices. This was not a comprehensive review of all security
+			flaws in the application, just the first 3 that were noticed by me. There are more present. In the
+			future, all data should be filtered in order to ensure it can be trusted and it won't hurt the
+			application.
+		</p> 
 
 	<h2>References</h2>
 		<ul>
