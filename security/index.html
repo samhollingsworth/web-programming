@@ -11,11 +11,16 @@
 	<p>By Sam Hollingsworth</p>
 
 	<h2>Introduction</h2>
-
-
+		<p>thawing-hamlet-47380 is a Web Application implemented to place users on a map and display other
+			local users around them as well as nearby monuments. The Web App uses Node.js + Express and
+			a database to store all the information through mongoDB. I was hired to find the security and
+			privacy issues in the web application and record them in this document with my recommendations
+			to resolve each issue.</p>
 
 	<h2>Methodology</h2>
-
+		<p>I began my testing with the attacks recommended in class by Ming. First, a Cross-Site Scripting attack
+			then a mongoDB injection. Next, I looked at the source code of the application to decide to do
+			a
 
 
 	<h2>Abstract of Findings</h2>
@@ -27,7 +32,7 @@
 		<li>
 			<p>Issue: Cross-Site Scripting</p>
 			<p>Location: XSS result can be found at https://thawing-hamlet-47380.herokuapp.com</p>
-			<p>Severity: Medium since a user can effect the experience of another</p>
+			<p>Severity: Medium since a user can affect the experience of another</p>
 			<p>Description: When data is sent to the app in the fields login, latitude, and
 				longitude the app does not remove special characters before inserting into the database.
 				So when the checkins are listed on the homepage, the script written by the user is
@@ -39,7 +44,7 @@
 		</li>
 
 		<li>
-			<p>Issue: mongoDB injection</p>
+			<p>Issue: mongoDB Injection</p>
 			<p>Location: https://thawing-hamlet-47380.herokuapp.com/checkins.json</p>
 			<p>Severity: High because someone can view all the checkins of everyone that has checked in,
 				allowing them to see every location the other users have been</p>
@@ -48,7 +53,8 @@
 				someone to access all the checkins for the other users since $ne means not equal
 				and will find all the usernames not equal to "Sam". In addition, upon looking at the
 				source code, my partner does not use the login to find specific users in the database.
-				Anything added to the end of /checkins.json? will result in all user information being displayed.</p>
+				Anything added to the end of /checkins.json? will result in all user information being
+				displayed.</p>
 			<p>Proof of Vulnerability:
 				<img id="mongoDBi" src="mongoDBi.png" alt="Picture of mongoDBi"/></p>
 			<p>Resolution: Install something like Sqreen in the Node.js app to prevent from mongoDB injections
@@ -57,12 +63,18 @@
 		</li>
 
 		<li>
-			<p>Issue: </p>
-			<p>Location: </p>
-			<p>Severity: </p>
-			<p>Description: </p>
-			<p>Proof of Vulnerability: </p>
-			<p>Resolution: </p>
+			<p>Issue: Bad Programming Practices</p>
+			<p>Location: Within the method of the route
+				https://thawing-hamlet-47380.herokuapp.com/sendLocation</p>
+			<p>Severity: Low because incorrect data won't affect other users</p>
+			<p>Description: Data sent to the server in the fields login, latitude, and longitude is only
+				checked if it is undefined. This allows the user to send anything to be stored in the
+				database and not what it is intended by the developer. This can cause problems for
+				applications that use the web server and rely on correct data from the server.</p>
+			<p>Proof of Vulnerability:
+				<img id="badcoding" src="badcoding.png" alt="Picture of Bad Programming"/></p>
+			<p>Resolution: Add more checks to make sure the login is a string, the latitude and longitude are
+				a float.</p>
 		</li>
 
 	</ol>
@@ -72,8 +84,12 @@
 
 
 	<h2>References</h2>
-
-
+		<ul>
+			<li>
+				<a href="https://blog.sqreen.io/prevent-nosql-injections-mongodb-node-js/">"How to prevent
+				NoSQL injections in MongoDB in a Node.js app" blog post</a>
+			</li>
+		</ul>
 
 </body>
 </html>
