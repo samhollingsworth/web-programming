@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>Assignment 4</h1>
+	<p>By Sam Hollingsworth</p>
 
 	<h2>Introduction</h2>
 
@@ -25,22 +26,25 @@
 	<ol>
 		<li>
 			<p>Issue: Cross-Site Scripting</p>
-			<p>Location: </p>
-			<p>Severity: </p>
-			<p>Description:
+			<p>Location: XSS result can be found at https://thawing-hamlet-47380.herokuapp.com</p>
+			<p>Severity: Medium since a user can effect the experience of another</p>
+			<p>Description: When data is sent to the app in the fields login, latitude, and longitude the app does not remove special characters before inserting into the database.
+				So when the checkins are listed on the homepage, the script written by the user is executed and results in an alert.
 				<img id="XSScurl" src="XSScurl.png" alt="Picture of curl command"/></p>
 			<p>Proof of Vulnerability:
 				<img id="XSSalert" src="XSSalert.png" alt="Picture of alert"/></p>
-			<p>Resolution: </p>
+			<p>Resolution: Remove special characters from data before inserting into database</p>
 		</li>
 
 		<li>
-			<p>Issue: </p>
-			<p>Location: </p>
-			<p>Severity: </p>
-			<p>Description: </p>
-			<p>Proof of Vulnerability: </p>
-			<p>Resolution: </p>
+			<p>Issue: mongoDB injection</p>
+			<p>Location: https://thawing-hamlet-47380.herokuapp.com/checkins.json</p>
+			<p>Severity: High because someone you can view all the checkins of everyone that has checked in, allowing them to see every location the other users have been</p>
+			<p>Description: Using the mongoDB injection, https://thawing-hamlet-47380.herokuapp.com/checkins.json?login[$ne]="Sam", allows someone to access all the checkins for the other users since $ne means not equal
+				and will find all the usernames not equal to "Sam"</p>
+			<p>Proof of Vulnerability:
+				<img id="mongoDBi" src="mongoDBi.png" alt="Picture of mongoDBi"/></p>
+			<p>Resolution: Install something like Sqreen in the Node.js app to prevent from mongoDB injections that does data validation on user input</p>
 		</li>
 
 		<li>
