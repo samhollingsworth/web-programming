@@ -9,7 +9,7 @@ Purpose of this Git repository:
 Favorite Lab or Assignment:
 ---------------------------
   I most thoroughly enjoyed completing Lab 4: Responsive Design, because I had to look more into media queries on my own in order to complete the lab and I enjoyed learning on my own, then successfully implementing what I learned.
-  Also, I had never previously thought about how a web page changes based on the size of the browser, so learnig about how that is implemented was fascinating as well being able to do it on my own was very cool.
+  Also, I had never previously thought about how a web page changes based on the size of the browser, so learning about how that is implemented was fascinating as well being able to do it on my own was very cool.
   
 How much do you think you have grown?:
 --------------------------------------
