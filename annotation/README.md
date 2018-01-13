@@ -4,4 +4,5 @@ By: Samuel Hollingsworth
 10 October 2017
 
 Purpose:
-	To annotate a video with lyrics based on time
+--------
+To annotate a video with lyrics based on time
