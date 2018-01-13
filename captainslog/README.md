@@ -3,21 +3,9 @@ COMP 20: Lab 6
 By: Samuel Hollingsworth
 31 October 2017
 
-Aspects Correctly Implemented:
+Purpose:
 ------------------------------
-All parts are correctly implemented
-
-Aspects Not Correctly Implemented:
-----------------------------------
-None
-
-Collaboration With:
--------------------
-None
-
-Time Spent:
------------
-2 Hours
+To store entries from user using local storage that is accessible when returning to the web page
 
 Citations:
 ----------
