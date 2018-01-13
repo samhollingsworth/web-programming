@@ -10,3 +10,5 @@ To store entries from user using local storage that is accessible when returning
 Citations:
 ----------
 https://www.w3schools.com/jquery/default.asp
+
+https://stackoverflow.com/questions/979662/how-to-detect-pressing-enter-on-keyboard-using-jquery
