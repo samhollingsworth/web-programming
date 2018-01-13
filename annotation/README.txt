@@ -1,5 +1,6 @@
-Samuel Hollingsworth
 COMP 20 Lab 5
+=============
+By: Samuel Hollingsworth
 10 October 2017
 
 Purpose:
